@@ -33,7 +33,8 @@ body {
   display: none;
 }
 
-.pomodoro {
+.pomodoro,
+.config-template {
   background-color: #fff;
   margin: 5rem 0;
   padding: 2rem;
@@ -41,7 +42,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.pomodoro h1 {
+h1 {
   font-size: 2.4rem;
   text-align: center;
 }
@@ -58,15 +59,17 @@ body {
   align-items: center;
 }
 
-.pomodoro button {
+button {
+  cursor: pointer;
   background-color: #41e1ba;
   padding: 1rem 2.5rem;
   border-radius: 4px;
   transition: background-color 300ms ease-in-out;
-  color: #000;
+  color: #fff;
+  border: none;
 }
 
-.pomodoro button:hover {
+button:hover {
   background-color: #15cb9e;
 }
 
@@ -87,18 +90,6 @@ body {
   font-weight: bold;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
 h1,
 h2,
 h3,
@@ -109,54 +100,37 @@ h6 {
   line-height: 1.2;
 }
 
-button {
-  font-family: inherit;
-  font-size: 1.6rem;
-  cursor: pointer;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  transition: background-color 0.2s ease;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.5rem;
 }
 
-input,
-textarea,
-select {
-  font-family: inherit;
-  font-size: 1.6rem;
+input {
   outline: none;
-  transition: border-color 0.3s ease;
-  line-height: 1;
+  font-size: 1.6rem;
+  background-color: #f9f9f9;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 1rem;
+  max-width: 30rem;
+  color: #333;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #007bff; /* VARIÁVEL */
-  outline: none;
+input:focus {
+  border: 1px solid #000;
+  transition: border 200ms ease-in-out;
+  transform: translateX(0.5rem);
+  transition: transform 100ms ease-in-out;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+input::placeholder {
+  color: #333;
 }
 
-th,
-td {
-  text-align: left;
-}
-
-th {
-  background-color: #f8f8f8; /* VARIÁVEL */
-  font-weight: 600;
-}
-
-::selection {
-  background-color: #007bff; /* VARIÁVEL */
-  color: white;
-}
-
-:focus-visible {
-  outline: 0.2rem solid #0056b3; /* VARIÁVEL */
-  outline-offset: 0.2rem;
+.div-input {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border-radius: 5px;
 }

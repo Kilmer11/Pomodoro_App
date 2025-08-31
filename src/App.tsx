@@ -1,16 +1,17 @@
 import React, { JSX } from 'react';
-import PomodoroTimer from './components/pomodoro-timer';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes/appRoutes';
+import PomodoroProvider from './hooks/pomodoroContext';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <PomodoroTimer
-        defaultPomodoroTime={5}
-        shortRestTime={1}
-        longRestTime={5}
-        cycles={4}
-      />
-    </div>
+    <BrowserRouter>
+      <PomodoroProvider>
+        <div className="App">
+          <AppRoutes />
+        </div>
+      </PomodoroProvider>
+    </BrowserRouter>
   );
 }
 

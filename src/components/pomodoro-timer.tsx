@@ -1,8 +1,9 @@
-import React, { JSX, useEffect, useState } from 'react';
+import React, { JSX, useEffect, useState, useContext } from 'react';
 import { useInterval } from '../hooks/use-interval';
 import Button from './button';
 import Timer from './timer';
 import secondsToTime from '../utils/seconds-to-time';
+import { PomodoroContext } from '../hooks/pomodoroContext';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const bellStart = require('../sounds/bell-start.mp3');
@@ -12,19 +13,16 @@ const bellFinish = require('../sounds/bell-finish.mp3');
 const audioStartWorking = new Audio(bellStart);
 const audioStopWorking = new Audio(bellFinish);
 
-interface Props {
-  defaultPomodoroTime: number;
-  shortRestTime: number;
-  longRestTime: number;
-  cycles: number;
-}
+function PomodoroTimer(): JSX.Element {
+  const { settings } = useContext(PomodoroContext);
 
-function PomodoroTimer(props: Props): JSX.Element {
-  const [mainTime, setMainTime] = useState(props.defaultPomodoroTime);
+  const [mainTime, setMainTime] = useState(settings.defaultPomodoroTime);
   const [timeCounting, setTimeCounting] = useState(false);
   const [working, setWorking] = useState(false);
   const [resting, setResting] = useState(false);
-  const [cycles, setCycles] = useState(new Array(props.cycles - 1).fill(true));
+  const [cycles, setCycles] = useState(
+    new Array(settings.cycles - 1).fill(true),
+  );
   const [completedCycles, setCompletedCycles] = useState(0);
   const [fullWorkingTime, setFullWorkingTime] = useState(0);
   const [numberOfPomodoros, setNumberOfPomodoros] = useState(0);
@@ -41,7 +39,7 @@ function PomodoroTimer(props: Props): JSX.Element {
     setTimeCounting(true);
     setWorking(true);
     setResting(false);
-    setMainTime(props.defaultPomodoroTime);
+    setMainTime(settings.defaultPomodoroTime);
     audioStartWorking.play();
   };
 
@@ -52,9 +50,9 @@ function PomodoroTimer(props: Props): JSX.Element {
     audioStopWorking.play();
 
     if (long) {
-      setMainTime(props.longRestTime);
+      setMainTime(settings.longRestTime);
     } else {
-      setMainTime(props.shortRestTime);
+      setMainTime(settings.shortRestTime);
     }
   };
 
@@ -68,7 +66,7 @@ function PomodoroTimer(props: Props): JSX.Element {
       cycles.pop();
     } else if (working && cycles.length <= 0) {
       configureRest(true);
-      setCycles(new Array(props.cycles - 1).fill(true));
+      setCycles(new Array(settings.cycles - 1).fill(true));
       setCompletedCycles((prev) => prev + 1);
     }
 
@@ -79,12 +77,12 @@ function PomodoroTimer(props: Props): JSX.Element {
     resting,
     mainTime,
     cycles,
+    settings.cycles,
     configureRest,
     configureWork,
     setCycles,
     setCompletedCycles,
     setNumberOfPomodoros,
-    props.cycles,
   ]);
 
   return (
