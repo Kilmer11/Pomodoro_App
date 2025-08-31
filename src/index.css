@@ -15,10 +15,76 @@ body {
   font-family: sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
-  color: #222222; /* VARIÁVEL */
-  background-color: #ffffff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: #222222;
+  background-color: #41e1ba;
+  transition: background-color 300ms ease-in-out;
+}
+
+.App {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.working {
+  background-color: #ef5d50;
+}
+
+.hidden {
+  display: none;
+}
+
+.pomodoro {
+  background-color: #fff;
+  margin: 5rem 0;
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.pomodoro h1 {
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.pomodoro .timer {
+  font-size: 6rem;
+  text-align: center;
+}
+
+.pomodoro .controls {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.pomodoro button {
+  background-color: #41e1ba;
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  transition: background-color 300ms ease-in-out;
+  color: #000;
+}
+
+.pomodoro button:hover {
+  background-color: #15cb9e;
+}
+
+.working .controls button {
+  color: #fff;
+  background-color: #ef5d50;
+}
+
+.pomodoro .details {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pomodoro p {
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
 img,
@@ -31,23 +97,6 @@ svg {
   max-width: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-a {
-  color: #1a81f4;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover,
-a:focus {
-  outline: none;
-}
-
-ul,
-ol {
-  list-style-position: inside;
-  padding-left: 0;
 }
 
 h1,
@@ -68,12 +117,6 @@ button {
   background-color: #007bff;
   color: white;
   transition: background-color 0.2s ease;
-}
-
-button:hover,
-button:focus {
-  background-color: #0056b3; /* VARIÁVEL */
-  outline: none;
 }
 
 input,
