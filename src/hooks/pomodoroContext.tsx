@@ -1,6 +1,7 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
 interface PomodoroSettings {
+  name: string;
   defaultPomodoroTime: number;
   shortRestTime: number;
   longRestTime: number;
@@ -17,6 +18,7 @@ const defaultSettings: PomodoroSettings = {
   shortRestTime: 300,
   longRestTime: 900,
   cycles: 4,
+  name: '',
 };
 
 export const PomodoroContext = createContext<PomodoroContextProps>({

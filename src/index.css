@@ -18,11 +18,21 @@ body {
   color: #222222;
   background-color: #41e1ba;
   transition: background-color 300ms ease-in-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App {
+  width: 60vw;
   max-width: 64rem;
-  margin: 0 auto;
+  min-width: 40rem;
+  background-color: #fff;
+  margin: 5rem 0;
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .working {
@@ -31,15 +41,6 @@ body {
 
 .hidden {
   display: none;
-}
-
-.pomodoro,
-.config-template {
-  background-color: #fff;
-  margin: 5rem 0;
-  padding: 2rem;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -73,7 +74,8 @@ button:hover {
   background-color: #15cb9e;
 }
 
-.working .controls button {
+.working .controls button,
+.working button {
   color: #fff;
   background-color: #ef5d50;
 }
@@ -103,8 +105,17 @@ h6 {
 form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 2.5rem;
+}
+
+.div-input {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.4rem;
 }
 
 input {
